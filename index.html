@@ -7,7 +7,9 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/sky.css">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&subset=cyrillic,cyrillic-ext" rel="stylesheet">
+
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -24,8 +26,183 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Drupal - Создание инсталляционных профайлов</h2>
+					<p>
+						<small>Created by <a href="http://cimpleo.com">Ivan Abramenko</a> / <a href="http://cimpleo.com">CimpleO</a> Drupal developer</small>
+					</p>
+					<p class="logo"><a href="http://cimpleo.com"><img src="img/logo-cimpleo.png" /></a> </p>
+					<p><a href="http://cimpleo.com">cimpleo.com</a></p>
+					<p><img src="/img/logo2_0.png"></p>
+				</section>
+				<section>
+					<h3>Инсталляционные профайлы Drupal.org:</h3>
+					<ul>
+						<li><strong>Commerce Kickstart</strong> - 10,000+ сайтов</li>
+						<li><strong>Panopoly</strong> - 3,000+ сайтов</li>
+						<li><strong>Open Atrium</strong> - 2,000+ сайтов</li>
+					</ul>
+					<h3>Платные инсталляционные профайлы ThemeForest.net</h3>
+					<ul>
+						<li><strong>InnoCompany</strong> (Ubercart) - 1500+ покупок</li>
+						<li><strong>Progressive</strong> (Ubercart) - 1300+ покупок</li>
+						<li><strong>Realia</strong> (доска объявлений) - 1000+ покупок</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Самый быстрый способ</h2>
+					<p><img src="/img/adminer.jpg"></p>
+				</section>
+				<section>
+					<h2>Самый быстрый способ</h2>
+					<p><a href="https://github.com/Drupalbook/shopogoliki">https://github.com/Drupalbook/shopogoliki</a> - /profiles/seven/seven.profile</p>
+					<pre><code>
+function seven_form_submit($form, &$form_state) {
+  // Import database seven file.
+  $seven_file = dirname(__FILE__) . '/seven.sql';
+  $success = import_seven($seven_file);
+  if (!$success) {
+    return;
+  }
+
+  variable_set('site_name', $form_state['values']['site_name']);
+  variable_set('site_mail', $form_state['values']['site_mail']);
+
+  $name = $form_state['values']['account']['name'];
+  $pass = $form_state['values']['account']['pass'];
+  $mail = $form_state['values']['account']['mail'];
+  db_update('users')
+      ->fields(array(
+        'name' => $name,
+        'pass' => user_hash_password($pass),
+        'mail' => $mail,
+      ))
+      ->condition('uid', 1)
+      ->execute();
+  user_authenticate($name, $pass);
+
+  drupal_goto('<front>');
+}</code></pre>
+				</section>
+				<section>
+					<h2>Самый быстрый способ</h2>
+					<p>Плюсы</p>
+					<ul>
+						<li>Быстро сделать</li>
+						<li>Быстро установить</li>
+					</ul>
+					<p>Минусы</p>
+					<ul>
+						<li>Нельзя локализовать при установке</li>
+						<li>Необходимо хранить SQL дамп в Git</li>
+						<li>Не Drupal way</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Сайт совместных покупок</h4>
+					<p>
+						<a href="https://github.com/Drupalbook/shopogoliki">https://github.com/Drupalbook/shopogoliki</a>
+						<img src="/img/sp.jpg">
+					</p>
+				</section>
+				<section>
+					<h2>Создание платных инсталляционных профайлов</h2>
+					<ul>
+						<li><a href="https://codecanyon.net">https://codecanyon.net</a></li>
+						<li><a href="https://www.themesnap.com">https://www.themesnap.com</a></li>
+					</ul>
+				</section>
+				<section>
+					<h2>Drupal way профайлы</h2>
+					<p>
+						<a href="https://www.drupal.org/project/project_distribution">
+							https://www.drupal.org/project/project_distribution
+						</a>
+					</p>
+					<p>
+						How to Write a Drupal 7 Installation Profile:<br>
+					  <a href="https://www.drupal.org/node/1022020">https://www.drupal.org/node/1022020</a>
+					</p>
+					<p>
+						How to Write a Drupal 8 Installation Profile: <br>
+						<a href="https://www.drupal.org/node/2210443">https://www.drupal.org/node/2210443</a>
+					</p>
+				</section>
+				<section>
+					<h2>Drublog</h2>
+					<p><img src="/img/drublog.jpg"></p>
+				</section>
+				<section>
+					<h2>Drupal 7 профайлы</h2>
+					<p>Вспомогательные средства:</p>
+					<ul>
+						<li>Profiler / Profiler Builder</li>
+						<li>Drush Make</li>
+						<li>Features / Feature set / Apps</li>
+					</ul>
+					<p>Installation Profile Utilities<br>
+						<a href="https://www.drupal.org/node/180078">https://www.drupal.org/node/180078</a></p>
+				</section>
+				<section>
+					<h2>Profiler / Profiler Builder</h2>
+					<p><img src="/img/builder.jpg"></p>
+				</section>
+				<section>
+					<h2>Drush Make</h2>
+					<pre>
+						<code>projects[commerce_payleap][version] = 1.1
+projects[commerce_moneybookers][version] = 1.2
+projects[commerce_moneybookers][patch][] = "http://drupal.org/files/commerce_moneybookers-disable_payment_method_by_default-1962226-3.patch"
+projects[commerce_paypal][version] = 2.3
+projects[commerce_paypal][patch][2458721] = "https://www.drupal.org/files/issues/commerce_paypal-addressfield-default-values-2458721-1.patch"
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>Features / Feature set / Apps</h2>
+					<p><img src="/img/features-set.png"></p>
+				</section>
+				<section>
+					<h2>Drupal 8 - создание инсталляционных профайлов</h2>
+					<p>
+						<a href="https://github.com/Drupalbook/drupal8-install-profile">
+							https://github.com/Drupalbook/drupal8-install-profile
+						</a>
+					</p>
+				</section>
+				<section>
+					<h3>Инсталляционные профайлы:</h3>
+					<p>Drupal 8 профайл:<br>
+					<a href="https://github.com/Drupalbook/drupal8-install-profile">
+						https://github.com/Drupalbook/drupal8-install-profile
+					</a>
+					</p>
+					<p>Drublog:<br>
+						<a href="http://drupalbook.ru/project/blog">http://drupalbook.ru/project/blog</a>
+					</p>
+					<p>
+						Совместные покупки:
+						<a href="http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki">
+							http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki
+						</a>
+					</p>
+					<p>
+						Интернет-магазин (локализованный commerce kickstart):
+						<a href="http://drupalbook.ru/drupal/drupal-internet-magazin">
+							http://drupalbook.ru/drupal/drupal-internet-magazin
+						</a>
+					</p>
+				</section>
+				<section>
+					<h2>Спасибо за внимание!</h2>
+					<h4>Drupal - Создание инсталляционных профайлов</h4>
+					<p>
+						<small>Created by <a href="http://cimpleo.com">Ivan Abramenko</a> / <a href="http://cimpleo.com">CimpleO</a> Drupal developer</small>
+					</p>
+					<p class="logo"><a href="http://cimpleo.com"><img src="img/logo-cimpleo.png" /></a> </p>
+					<p><a href="http://cimpleo.com">cimpleo.com</a></p>
+					<p><img src="/img/logo2_0.png"></p>
+				</section>
 			</div>
 		</div>
 
