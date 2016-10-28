@@ -49,6 +49,41 @@
 					</ul>
 				</section>
 				<section>
+					<h3>Структура инсталляционного профайла</h3>
+					<p><img src="/img/sp-files.png"></p>
+				</section>
+				<section>
+					<h3>seven.info</h3>
+					<pre><code>name = Совместные покупки
+description = Сборка совместные покупки от drupalbook.ru
+version = VERSION
+core = 7.x
+dependencies[] = block
+files[] = seven.profile
+					</code></pre>
+				</section>
+				<section>
+					<h3>seven.profile</h3>
+					<pre><code>function seven_form_install_configure_form_alter(&$form, $form_state) { ... }
+
+function seven_form_submit($form, &$form_state) { ... }
+
+// Helper functions
+function import_seven($filename) { ... }
+
+function list_tables() { ... }
+</code></pre>
+				</section>
+				<section>
+					<h4>Сайт совместных покупок</h4>
+					<p>
+						<a href="https://github.com/Drupalbook/shopogoliki">https://github.com/Drupalbook/shopogoliki</a>
+						<br>
+						<a href="http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki">http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki</a>
+						<img src="/img/sp.jpg">
+					</p>
+				</section>
+				<section>
 					<h2>Самый быстрый способ</h2>
 					<p><img src="/img/adminer.jpg"></p>
 				</section>
@@ -84,6 +119,10 @@ function seven_form_submit($form, &$form_state) {
 }</code></pre>
 				</section>
 				<section>
+					<h3>Подстановка логина и пароля admin</h3>
+					<img src="/img/install-page.png">
+				</section>
+				<section>
 					<h2>Самый быстрый способ</h2>
 					<p>Плюсы</p>
 					<ul>
@@ -98,18 +137,17 @@ function seven_form_submit($form, &$form_state) {
 					</ul>
 				</section>
 				<section>
-					<h4>Сайт совместных покупок</h4>
-					<p>
-						<a href="https://github.com/Drupalbook/shopogoliki">https://github.com/Drupalbook/shopogoliki</a>
-						<img src="/img/sp.jpg">
-					</p>
-				</section>
-				<section>
 					<h2>Создание платных инсталляционных профайлов</h2>
 					<ul>
 						<li><a href="https://codecanyon.net">https://codecanyon.net</a></li>
 						<li><a href="https://www.themesnap.com">https://www.themesnap.com</a></li>
 					</ul>
+				</section>
+				<section>
+					<h2>Drublog</h2>
+					<p><a href="https://github.com/levmyshkin/drublog">https://github.com/levmyshkin/drublog</a></p>
+					<p><a href="https://drupal.org/sandbox/levmyshkin/1554560">https://drupal.org/sandbox/levmyshkin/1554560</a></p>
+					<p><img src="/img/drublog.jpg"></p>
 				</section>
 				<section>
 					<h2>Drupal way профайлы</h2>
@@ -128,8 +166,16 @@ function seven_form_submit($form, &$form_state) {
 					</p>
 				</section>
 				<section>
-					<h2>Drublog</h2>
-					<p><img src="/img/drublog.jpg"></p>
+					<h2>Drublog структруа файлов</h2>
+					<p><img src="/img/drublog-structure.png"></p>
+				</section>
+				<section>
+					<h2>Drublog шаги</h2>
+					<p><img src="/img/drublog-steps.png"></p>
+				</section>
+				<section>
+					<h2>Drublog настройка шагов</h2>
+					<p><img src="/img/drublog-logic.png"></p>
 				</section>
 				<section>
 					<h2>Drupal 7 профайлы</h2>
@@ -144,7 +190,16 @@ function seven_form_submit($form, &$form_state) {
 				</section>
 				<section>
 					<h2>Profiler / Profiler Builder</h2>
-					<p><img src="/img/builder.jpg"></p>
+					<table>
+						<tr>
+							<td>
+								<img src="/img/builder2.jpg">
+							</td>
+							<td>
+								<img src="/img/builder3.jpg">
+							</td>
+						</tr>
+					</table>
 				</section>
 				<section>
 					<h2>Drush Make</h2>
@@ -163,11 +218,16 @@ projects[commerce_paypal][patch][2458721] = "https://www.drupal.org/files/issues
 				</section>
 				<section>
 					<h2>Drupal 8 - создание инсталляционных профайлов</h2>
+				</section>
+				<section>
+					<h3>Seller</h3>
 					<p>
-						<a href="https://github.com/Drupalbook/drupal8-install-profile">
-							https://github.com/Drupalbook/drupal8-install-profile
+						<a href="https://drupal.org/sandbox/levmyshkin/2820003">
+							https://drupal.org/sandbox/levmyshkin/2820003
 						</a>
 					</p>
+					<p><img src="/img/seller.png"></p>
+
 				</section>
 				<section>
 					<h2>Configuration installer</h2>
@@ -175,6 +235,18 @@ projects[commerce_paypal][patch][2458721] = "https://www.drupal.org/files/issues
 						<a href="https://www.drupal.org/project/config_installer">
 							https://www.drupal.org/project/config_installer
 						</a>
+					</p>
+					<h3>Инсталляционный профайл:</h3>
+					<p>
+						<a href="https://github.com/levmyshkin/seller-config-installer">
+							https://github.com/levmyshkin/seller-config-installer
+						</a>
+					</p>
+				</section>
+				<section>
+					<h3>Профайл на основе Config installer</h3>
+					<p>
+						<img src="/img/config-installer.png">
 					</p>
 				</section>
         <section>
@@ -191,7 +263,7 @@ projects[commerce_paypal][patch][2458721] = "https://www.drupal.org/files/issues
           </p>
         </section>
 				<section>
-					<h2>Пишем свой Drupal 8 инсталяционный профайл</h2>
+					<h2>Пишем свой Drupal 8 инсталляционный профайл</h2>
           <p>
             <a href="https://www.drupal.org/docs/8/creating-distributions/how-to-write-a-drupal-8-installation-profile">
               https://www.drupal.org/docs/8/creating-distributions/how-to-write-a-drupal-8-installation-profile
@@ -204,25 +276,73 @@ projects[commerce_paypal][patch][2458721] = "https://www.drupal.org/files/issues
 					</p>
 				</section>
 				<section>
-					<h3>Инсталляционные профайлы:</h3>
-					<p>Drupal 8 профайл:<br>
-					<a href="https://github.com/Drupalbook/drupal8-install-profile">
-						https://github.com/Drupalbook/drupal8-install-profile
-					</a>
-					</p>
-					<p>Drublog:<br>
-						<a href="http://drupalbook.ru/project/blog">http://drupalbook.ru/project/blog</a>
-					</p>
+					<h3>Seller структура файлов</h3>
+					<p><img src="/img/seller-structure.png"></p>
+				</section>
+				<section>
+					<h3>Зависимости seller.info.yml</h3>
 					<p>
-						Совместные покупки:
-						<a href="http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki">
-							http://drupalbook.ru/drupal/drupal-sovmestnye-pokupki
+						<pre><code>dependencies:
+  - address
+  - admin_toolbar
+  - admin_toolbar_tools
+	...
+  - inline_entity_form
+  - color_field
+  - datetime
+  - entity_reference_revisions
+  - commerce
+  - commerce_price
+  - commerce_store
+  - commerce_product
+  - commerce_order
+  - commerce_cart
+  - commerce_checkout</code></pre>
+					</p>
+				</section>
+				<section>
+					<h3>Seller конфигурационные файлы</h3>
+					<p><img src="/img/configs.png"></p>
+				</section>
+				<section>
+					<h3>Default Content</h3>
+					<p><pre><code>drush dcem commerce_product 1</code></pre></p>
+					<p><img src="/img/json.png"></p>
+				</section>
+				<section>
+					<h3>Drupal 8 RESTful</h3>
+					<ul>
+						<li>REST UI</li>
+						<li>HAL</li>
+						<li>REST</li>
+						<li>Serialization</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Тестирование</h3>
+					<ul>
+						<li>SimpleTest</li>
+						<li>Unit testing</li>
+						<li>Jenkins</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Инсталляционные профайлы:</h3>
+					<p>
+						Seller:<br>
+						<a href="https://github.com/levmyshkin/seller">
+							https://github.com/levmyshkin/seller
 						</a>
 					</p>
 					<p>
-						Интернет-магазин (локализованный commerce kickstart):
-						<a href="http://drupalbook.ru/drupal/drupal-internet-magazin">
-							http://drupalbook.ru/drupal/drupal-internet-magazin
+						Drublog:<br>
+						<a href="https://github.com/levmyshkin/drublog">
+							https://github.com/levmyshkin/drublog</a>
+					</p>
+					<p>
+						Совместные покупки: <br>
+						<a href="https://github.com/Drupalbook/shopogoliki">
+							https://github.com/Drupalbook/shopogoliki
 						</a>
 					</p>
 				</section>
